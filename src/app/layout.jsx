@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/shared/Navbar";
 import MyContainer from "@/components/shared/MyContainer";
+import Footer from "@/components/shared/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <Navbar />
         {children}
+        <Footer />
         <Toaster position="bottom-center" reverseOrder={false} />
       </body>
     </html>
