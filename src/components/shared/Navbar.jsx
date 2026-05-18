@@ -22,7 +22,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between relative">
           {/* Logo - Left */}
           <div className="flex items-center">
-            <Link href="/" onClick={closeMenu}>
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="flex items-center gap-3"
+            >
               <Image
                 width={64}
                 height={24}
@@ -30,6 +34,10 @@ const Navbar = () => {
                 alt="Logo"
                 priority
               />
+              <h3 className="font-bold text-2xl">
+                <span className="text-[#0F70B7]">Study</span>
+                <span className="text-[#3BAA34]">Nook</span>
+              </h3>
             </Link>
           </div>
 
@@ -94,7 +102,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-6 mb-4 pt-6 border-t border-gray-200">
+          <div className="lg:hidden mt-5 mb-4 pt-6 border-t border-gray-200">
             <div className="flex flex-col gap-5 text-lg">
               <Navlink href="/" onClick={closeMenu}>
                 Home

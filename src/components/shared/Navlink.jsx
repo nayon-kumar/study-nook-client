@@ -12,7 +12,7 @@ const Navlink = ({ children, href, className, onClick }) => {
       href={href}
       onClick={onClick}
       className={`font-medium ${className} ${
-        active ? "text-[#15A1BF] border-b-2 border-[#15A1BF]" : "text-[#0C0B0B]"
+        active ? "text-[#3592F9] border-b-2 border-[#3592F9]" : "text-[#0C0B0B]"
       }`}
     >
       {children}

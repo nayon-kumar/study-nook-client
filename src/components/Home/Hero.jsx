@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="relative z-10 flex items-center justify-center h-full text-center px-4 animate__animated animate__fadeInUp">
         <div className="max-w-3xl text-white">
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            Find Your Perfect <span className="text-[#0F70B7]">Study Room</span>
+            Find Your Perfect <span className="text-[#3592F9]">Study Room</span>
           </h1>
 
           <p className="my-6 text-gray-200">

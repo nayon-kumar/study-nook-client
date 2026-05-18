@@ -1,3 +1,5 @@
+import MyContainer from "@/components/shared/MyContainer";
+
 export const metadata = {
   title: "Add Room - StudyNook",
   description:
@@ -6,9 +8,14 @@ export const metadata = {
 
 const AddRoomPage = () => {
   return (
-    <div>
-      <p>AddRoomPage</p>
-    </div>
+    <MyContainer className="pt-40 pb-20">
+      <div className="text-center">
+        <h3 className="text-[#0C0B0B] text-2xl font-semibold md:text-4xl">
+          Add Room
+        </h3>
+        <p className="mt-4 text-[#6C696D] ">Paragraph</p>
+      </div>
+    </MyContainer>
   );
 };
 

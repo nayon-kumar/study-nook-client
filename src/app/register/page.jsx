@@ -1,3 +1,6 @@
+import RegisterForm from "@/components/Register/RegisterForm";
+import MyContainer from "@/components/shared/MyContainer";
+
 export const metadata = {
   title: "Register - StudyNook",
   description:
@@ -6,9 +9,17 @@ export const metadata = {
 
 const RegisterPage = () => {
   return (
-    <div>
-      <p>RegisterPage</p>
-    </div>
+    <MyContainer className="pt-40 pb-20">
+      <div className="text-center">
+        <h3 className="text-[#0C0B0B] text-2xl font-semibold md:text-4xl">
+          Register a StudyNook Account
+        </h3>
+        <p className="mt-4 text-[#6C696D] ">Start booking quiet rooms today.</p>
+      </div>
+      <div className="flex items-center justify-center mt-10 max-w-3xl mx-auto">
+        <RegisterForm />
+      </div>
+    </MyContainer>
   );
 };
 
