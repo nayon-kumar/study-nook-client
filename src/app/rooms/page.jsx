@@ -1,4 +1,5 @@
 import MyContainer from "@/components/shared/MyContainer";
+import { getAllRooms } from "@/lib/data";
 
 export const metadata = {
   title: "Rooms - StudyNook",
@@ -6,7 +7,9 @@ export const metadata = {
     "StudyNook is a full-stack web application where students and library users can list study rooms they control (e.g., private rooms in a university library), and any registered user can browse, search, filter, and book those rooms for a specific date and time slot. ",
 };
 
-const RoomsPage = () => {
+const RoomsPage = async () => {
+  const rooms = await getAllRooms();
+  console.log(rooms);
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="text-center">
