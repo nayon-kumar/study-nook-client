@@ -1,10 +1,12 @@
-import Image from "next/image";
+import MyContainer from "@/components/shared/MyContainer";
 
 export default function Home() {
   return (
     <div>
       <main>
-        <p>Home page</p>
+        <MyContainer className="pt-40">
+          <p>Home page</p>
+        </MyContainer>
       </main>
     </div>
   );
