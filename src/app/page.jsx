@@ -1,4 +1,5 @@
 import Hero from "@/components/Home/Hero";
+import Why from "@/components/Home/Why";
 import MyContainer from "@/components/shared/MyContainer";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
     <div>
       <main>
         <Hero />
-        <MyContainer className=""></MyContainer>
+        <Why />
       </main>
     </div>
   );
