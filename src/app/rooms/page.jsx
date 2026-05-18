@@ -1,5 +1,6 @@
 import MyContainer from "@/components/shared/MyContainer";
 import { getAllRooms } from "@/lib/data";
+import RoomCard from "@/ui/RoomCard";
 
 export const metadata = {
   title: "Rooms - StudyNook",
@@ -19,6 +20,12 @@ const RoomsPage = async () => {
         <p className="mt-4 text-[#6C696D] ">
           Browse the full catalog. Filter by amenity, price, or search by name.
         </p>
+      </div>
+      <div>Filter and Search option</div>
+      <div className="grid gap-6 mt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {rooms.map((room) => (
+          <RoomCard key={room._id} room={room} />
+        ))}
       </div>
     </MyContainer>
   );
