@@ -1,6 +1,8 @@
 import React from "react";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import MyContainer from "../shared/MyContainer";
+import { RiCalendarScheduleLine } from "react-icons/ri";
+import { HiOutlineClipboardList } from "react-icons/hi";
 
 const Why = () => {
   return (
@@ -13,34 +15,38 @@ const Why = () => {
         schedule.
       </p>
       <MyContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-15">
-        <div className="bg-white rounded-xl p-4">
-          <div className="bg-[#E7EBE7] w-fit p-3 rounded-xl">
-            <FaRegCalendarCheck size={20} />
+        <div className="bg-white rounded-xl p-6 border border-gray-300 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2">
+          <div className="bg-green-500 w-fit p-3 rounded-xl">
+            <FaRegCalendarCheck size={22} className="text-white" />
           </div>
-          <h4 className="font-bold text-xl mt-4">Easy Booking</h4>
+          <h4 className="font-bold text-lg md:text-xl mt-4">Easy Booking</h4>
           <p className="text-gray-500 mt-2">
-            Pick a date, choose an hour, see the cost — done. No back-and-forth
+            Pick a date, choose an hour, see the cost - done. No back-and-forth
             emails or paperwork.
           </p>
         </div>
-        <div className="bg-white rounded-xl p-4">
-          <div className="bg-[#E7EBE7] w-fit p-3 rounded-xl">
-            <FaRegCalendarCheck size={20} />
+        <div className="bg-white rounded-xl p-6 border border-gray-300 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2">
+          <div className="bg-green-500 w-fit p-3 rounded-xl">
+            <RiCalendarScheduleLine size={23} className="text-white" />
           </div>
-          <h4 className="font-bold text-xl mt-4">Easy Booking</h4>
+          <h4 className="font-bold text-lg md:text-xl mt-4">
+            Conflict-Free Scheduling
+          </h4>
           <p className="text-gray-500 mt-2">
-            Pick a date, choose an hour, see the cost — done. No back-and-forth
-            emails or paperwork.
+            Smart overlap detection prevents double-bookings, so the room you
+            reserve is the room you get.
           </p>
         </div>
-        <div className="bg-white rounded-xl p-4">
-          <div className="bg-[#E7EBE7] w-fit p-3 rounded-xl">
-            <FaRegCalendarCheck size={20} />
+        <div className="bg-white rounded-xl p-6 border border-gray-300 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2">
+          <div className="bg-green-500 w-fit p-3 rounded-xl">
+            <HiOutlineClipboardList size={24} className="text-white" />
           </div>
-          <h4 className="font-bold text-xl mt-4">Easy Booking</h4>
+          <h4 className="font-bold text-lg md:text-xl mt-4">
+            Manage Your Listings
+          </h4>
           <p className="text-gray-500 mt-2">
-            Pick a date, choose an hour, see the cost — done. No back-and-forth
-            emails or paperwork.
+            Own a room? List it, set your hourly rate, and keep full control
+            from your dashboard.
           </p>
         </div>
       </MyContainer>
