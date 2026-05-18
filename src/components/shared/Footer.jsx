@@ -24,11 +24,15 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="text-white mb-3 tracking-wide">QUICK LINKS</h3>
-            <ul className="space-y-2">
-              <li className="hover:text-white cursor-pointer">Home</li>
-              <li className="hover:text-white cursor-pointer">Rooms</li>
-              <li className="hover:text-white cursor-pointer">About</li>
-            </ul>
+            <div className="flex flex-col gap-2">
+              <Link href="/" className="hover:text-white cursor-pointer">
+                Home
+              </Link>
+              <Link href="rooms" className="hover:text-white cursor-pointer">
+                Rooms
+              </Link>
+              <p className="hover:text-white cursor-pointer">About</p>
+            </div>
           </div>
 
           {/* Support */}

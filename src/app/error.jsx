@@ -9,7 +9,7 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-red-50 text-center px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#F9F6F1] text-center px-4">
       <h1 className="text-6xl font-bold text-red-600">Oops!</h1>
 
       <h2 className="mt-4 text-2xl font-semibold text-gray-800">
