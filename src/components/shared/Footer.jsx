@@ -1,20 +1,24 @@
+import Image from "next/image";
 import Link from "next/link";
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
+import { GrInstagram } from "react-icons/gr";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-400 px-4 md:px-16 py-16 mt-40">
+    <footer className="bg-black text-gray-400 px-4 md:px-16 py-16">
       <div className="max-w-7xl mx-auto">
         {/* Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Newsletter */}
           <div>
-            <Link
-              href="/"
-              className="text-white mb-3 text-3xl md:text-4xl font-bold tracking-wide"
-            >
-              StudyNook
+            <Link href="/">
+              <Image src="/logo34.png" alt="Logo" width={64} height={64} />
+              <h3 className="font-bold text-2xl mt-4">
+                <span className="text-[#0F70B7]">Study</span>
+                <span className="text-[#3BAA34]">Nook</span>
+              </h3>
             </Link>
-            <p className="mt-6 text-sm">Book your room easily.</p>
           </div>
 
           {/* Quick Links */}
@@ -53,12 +57,25 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm">© 2026 Wanderlust. All rights reserved.</p>
+          <p className="text-sm">© 2026 StudyNook. All rights reserved.</p>
 
-          <div className="flex gap-5 mt-4 md:mt-0 text-white text-lg">
-            <span className="cursor-pointer">X</span>
-            <span className="cursor-pointer">in</span>
-            <span className="cursor-pointer">◎</span>
+          <div className="flex gap-4 mt-4 md:mt-0 text-white text-lg">
+            <FaFacebookSquare
+              size={20}
+              className="cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out"
+            />
+            <FaSquareXTwitter
+              size={20}
+              className="cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out"
+            />
+            <FaLinkedin
+              size={20}
+              className="cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out"
+            />
+            <GrInstagram
+              size={20}
+              className="cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out"
+            />
           </div>
         </div>
       </div>

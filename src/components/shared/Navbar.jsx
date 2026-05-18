@@ -24,9 +24,9 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link href="/" onClick={closeMenu}>
               <Image
-                width={162}
+                width={64}
                 height={24}
-                src="/logo2.png"
+                src="/logo34.png"
                 alt="Logo"
                 priority
               />
