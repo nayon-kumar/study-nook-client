@@ -1,30 +1,30 @@
-// import { betterAuth } from "better-auth";
-// import { MongoClient } from "mongodb";
-// import { mongodbAdapter } from "better-auth/adapters/mongodb";
-// import { jwt } from "better-auth/plugins";
+import { betterAuth } from "better-auth";
+import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { jwt } from "better-auth/plugins";
+import { MongoClient } from "mongodb";
 
-// const client = new MongoClient(process.env.BETTER_AUTH_URI);
-// const db = client.db("wonderlast");
+const client = new MongoClient(process.env.BD_URI);
+const db = client.db("study-nook");
 
-// export const auth = betterAuth({
-//   emailAndPassword: {
-//     enabled: true,
-//   },
-//   socialProviders: {
-//     google: {
-//       clientId: process.env.GOOGLE_CLIENT_ID,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//     },
-//   },
-//   session: {
-//     cookieCache: {
-//       enabled: true,
-//       strategy: "jwt",
-//       maxAge: 7 * 24 * 60 * 60,
-//     },
-//   },
-//   plugins: [jwt()],
-//   database: mongodbAdapter(db, {
-//     client,
-//   }),
-// });
+export const auth = betterAuth({
+  emailAndPassword: {
+    enabled: true,
+  },
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
+  //   session: {
+  //     cookieCache: {
+  //       enabled: true,
+  //       strategy: "jwt",
+  //       maxAge: 7 * 24 * 60 * 60,
+  //     },
+  //   },
+  //   plugins: [jwt()],
+  database: mongodbAdapter(db, {
+    client,
+  }),
+});

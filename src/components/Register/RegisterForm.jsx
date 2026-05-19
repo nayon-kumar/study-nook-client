@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -27,24 +28,24 @@ const RegisterForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // setIsPending(true);
-    // try {
-    //   const formData = new FormData(e.target);
-    //   const signUpData = Object.fromEntries(formData.entries());
+    setIsPending(true);
+    try {
+      const formData = new FormData(e.target);
+      const signUpData = Object.fromEntries(formData.entries());
 
-    //   const { data, error } = await authClient.signUp.email({
-    //     name: signUpData.name,
-    //     email: signUpData.email,
-    //     password: signUpData.password,
-    //     image: signUpData.image,
-    //   });
-    //   if (data) {
-    //     toast.success("Sign Up Successfully!");
-    //     redirect("/login");
-    //   }
-    // } finally {
-    //   setIsPending(false);
-    // }
+      const { data, error } = await authClient.signUp.email({
+        name: signUpData.name,
+        email: signUpData.email,
+        password: signUpData.password,
+        image: signUpData.image,
+      });
+      if (data) {
+        toast.success("Register Successfully!");
+        redirect("/login");
+      }
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -107,12 +108,12 @@ const RegisterForm = () => {
             {isPending ? (
               <>
                 <Spinner color="current" size="sm" />
-                Creating Account...
+                Registering...
               </>
             ) : (
               <>
                 <Check />
-                Create Account
+                Register
               </>
             )}
           </Button>

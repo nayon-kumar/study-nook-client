@@ -26,24 +26,24 @@ export function LoginForm() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // setIsPending(true);
-    // try {
-    //   const formData = new FormData(e.target);
-    //   const loginData = Object.fromEntries(formData.entries());
-    //   const { data, error } = await authClient.signIn.email({
-    //     email: loginData.email,
-    //     password: loginData.password,
-    //     rememberMe: true,
-    //     callbackURL: "/",
-    //   });
-    //   if (data) {
-    //     toast.success("Login Successfully!");
-    //   } else {
-    //     toast.error(`${error.message}`);
-    //   }
-    // } finally {
-    //   setIsPending(false);
-    // }
+    setIsPending(true);
+    try {
+      const formData = new FormData(e.target);
+      const loginData = Object.fromEntries(formData.entries());
+      const { data, error } = await authClient.signIn.email({
+        email: loginData.email,
+        password: loginData.password,
+        rememberMe: true,
+        callbackURL: "/",
+      });
+      if (data) {
+        toast.success("Login Successfully!");
+      } else {
+        toast.error(`${error.message}`);
+      }
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
