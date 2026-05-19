@@ -10,11 +10,11 @@ import {
   Label,
   Spinner,
   TextField,
-  toast,
 } from "@heroui/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const RegisterForm = () => {
@@ -42,6 +42,8 @@ const RegisterForm = () => {
       if (data) {
         toast.success("Register Successfully!");
         redirect("/login");
+      } else {
+        toast.error(`${error.message}`);
       }
     } finally {
       setIsPending(false);
