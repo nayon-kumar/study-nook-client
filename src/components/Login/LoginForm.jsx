@@ -20,9 +20,9 @@ export function LoginForm() {
   const [isPending, setIsPending] = useState(false);
 
   const handleGoogle = async () => {
-    // const data = await authClient.signIn.social({
-    //   provider: "google",
-    // });
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   const onSubmit = async (e) => {
