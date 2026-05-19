@@ -1,4 +1,5 @@
 import BackButton from "@/components/Details/BackButton";
+import EditModal from "@/components/Details/EditModal";
 import MyContainer from "@/components/shared/MyContainer";
 import { auth } from "@/lib/auth";
 import { getOneRoomByID } from "@/lib/data";
@@ -8,7 +9,6 @@ import Image from "next/image";
 import React from "react";
 import { FaHouseDamage } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
-import { MdEdit } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { RxPeople } from "react-icons/rx";
 
@@ -82,10 +82,7 @@ const DetailsPage = async ({ params }) => {
             {user.id === room?.userID && (
               <>
                 <div className="grid grid-cols-2 gap-3 mt-4">
-                  <Button variant="secondary" className="w-full">
-                    <MdEdit />
-                    Edit
-                  </Button>
+                  <EditModal room={room} />
                   <Button variant="danger" className="w-full">
                     <RiDeleteBinLine />
                     Delete
