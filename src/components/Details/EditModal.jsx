@@ -1,4 +1,6 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
+import { editRoom } from "@/lib/data";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -15,15 +17,53 @@ import {
   TextField,
 } from "@heroui/react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { MdEdit } from "react-icons/md";
 
 const EditModal = ({ room }) => {
   const [multipleSelected, setMultipleSelected] = useState(
     room?.amenities || [],
   );
+
   const [isPending, setIsPending] = useState(false);
-  const onSubmit = (e) => {
+
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
+  const onSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const formInputData = Object.fromEntries(formData.entries());
+    const updatedRoomData = {
+      name: formInputData.name,
+      description: formInputData.description,
+      image: formInputData.image,
+      floor: Number(formInputData.floor),
+      capacity: Number(formInputData.capacity),
+      price: Number(formInputData.price),
+      amenities: multipleSelected,
+      bookings: room?.bookings,
+      date: new Date().toLocaleDateString(),
+      userID: user.id,
+      userName: user.name,
+      userEmail: user.email,
+      userImage: user.image,
+    };
+
+    try {
+      setIsPending(true);
+
+      const result = await editRoom(updatedRoomData, room._id);
+
+      if (result.modifiedCount > 0) {
+        toast.success("Edited Successfully!");
+        window.location.reload();
+      }
+    } catch (error) {
+      toast.error("Failed to edit room!");
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -142,7 +182,7 @@ const EditModal = ({ room }) => {
                   </TagGroup>
 
                   <div className="flex gap-2">
-                    <Button type="submit" className="w-full">
+                    <Button slot="close" type="submit" className="w-full">
                       {isPending ? (
                         <>
                           <Spinner color="current" size="sm" />
