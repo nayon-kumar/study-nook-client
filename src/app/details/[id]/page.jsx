@@ -13,7 +13,6 @@ import { RxPeople } from "react-icons/rx";
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
   const room = await getOneRoomByID(id);
-  console.log(room);
   return (
     <MyContainer className="pt-38 pb-20">
       <div>

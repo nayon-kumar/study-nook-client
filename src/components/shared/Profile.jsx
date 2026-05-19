@@ -1,8 +1,7 @@
 import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
-import { Avatar, Button, Dropdown, Label } from "@heroui/react";
+import { Avatar, Dropdown, Label } from "@heroui/react";
 import MyContainer from "./MyContainer";
 import { authClient } from "@/lib/auth-client";
-import Link from "next/link";
 
 const Profile = ({ user }) => {
   return (
@@ -21,7 +20,7 @@ const Profile = ({ user }) => {
           </Avatar>
         </Dropdown.Trigger>
         <Dropdown.Popover placement="left" className="rounded-md mt-21 -mr-15">
-          <div className="px-3 py-3 border-b">
+          <div className="px-3 pt-3 pb-1">
             <div className="flex items-center gap-2">
               <div className="flex flex-col gap-0">
                 <p className="text-sm leading-5 font-medium">{user.name}</p>
@@ -29,21 +28,18 @@ const Profile = ({ user }) => {
               </div>
             </div>
           </div>
-          <div className="border-b mt-1 pb-1">
-            <Link
-              className="block hover:bg-[#E48B25] hover:text-white px-2 mx-1 rounded-md py-1"
-              href="/my-listings"
-            >
-              My Listings
-            </Link>
-            <Link
-              className="block hover:bg-[#E48B25] hover:text-white px-2 mx-1 rounded-md py-1"
-              href="/my-bookings"
-            >
-              My Bookings
-            </Link>
-          </div>
           <Dropdown.Menu>
+            <Dropdown.Item
+              href="/my-listings"
+              id="dashboard"
+              textValue="Dashboard"
+            >
+              <Label>My Listings</Label>
+            </Dropdown.Item>
+            <Dropdown.Item href="/my-bookings" id="profile" textValue="Profile">
+              <Label>My Bookings</Label>
+            </Dropdown.Item>
+
             <Dropdown.Item
               id="logout"
               textValue="Logout"
