@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navlink from "./Navlink";
 import { Bars, Xmark } from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
+import Profile from "./Profile";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,35 +59,16 @@ const Navbar = () => {
           <div className="flex items-center gap-6">
             {/* Desktop Auth Links */}
             <div className="hidden lg:flex items-center gap-6">
-              {/* {user ? (
+              {user ? (
                 <>
-                  <Link href="/profile">
-                    <Avatar>
-                      <Avatar.Image
-                        referrerPolicy="no-referrer"
-                        alt={user?.name}
-                        src={user?.image}
-                      />
-                      <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
-                    </Avatar>
-                  </Link>
-                  <Button
-                    onClick={async () => await authClient.signOut()}
-                    variant="danger"
-                  >
-                    Logout
-                  </Button>
+                  <Profile user={user} />
                 </>
               ) : (
                 <>
                   <Navlink href="/login">Login</Navlink>
-                  <Navlink href="/signup">Sign Up</Navlink>
+                  <Navlink href="/register">Register</Navlink>
                 </>
-              )} */}
-              <>
-                <Navlink href="/login">Login</Navlink>
-                <Navlink href="/register">Register</Navlink>
-              </>
+              )}
             </div>
 
             {/* Mobile Hamburger */}
