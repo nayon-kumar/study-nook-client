@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navlink from "./Navlink";
-import { Person, Bars, Xmark } from "@gravity-ui/icons";
-import { Avatar, Button } from "@heroui/react";
+import { Bars, Xmark } from "@gravity-ui/icons";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  //   const { data: session, isPending } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
 
-  //   const user = session?.user;
+  const user = session?.user;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -45,9 +45,13 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
             <Navlink href="/">Home</Navlink>
             <Navlink href="/rooms">Rooms</Navlink>
-            <Navlink href="/add-room">Add Room</Navlink>
-            <Navlink href="/my-listings">My Listings</Navlink>
-            <Navlink href="/my-bookings">My Bookings</Navlink>
+            {user && (
+              <>
+                <Navlink href="/add-room">Add Room</Navlink>
+                <Navlink href="/my-listings">My Listings</Navlink>
+                <Navlink href="/my-bookings">My Bookings</Navlink>
+              </>
+            )}
           </div>
 
           {/* Right Side */}
@@ -110,15 +114,19 @@ const Navbar = () => {
               <Navlink href="/rooms" onClick={closeMenu}>
                 Rooms
               </Navlink>
-              <Navlink href="/add-room" onClick={closeMenu}>
-                Add Room
-              </Navlink>
-              <Navlink href="/my-listings" onClick={closeMenu}>
-                My Listings
-              </Navlink>
-              <Navlink href="/my-bookings" onClick={closeMenu}>
-                My Bookings
-              </Navlink>
+              {user && (
+                <>
+                  <Navlink href="/add-room" onClick={closeMenu}>
+                    Add Room
+                  </Navlink>
+                  <Navlink href="/my-listings" onClick={closeMenu}>
+                    My Listings
+                  </Navlink>
+                  <Navlink href="/my-bookings" onClick={closeMenu}>
+                    My Bookings
+                  </Navlink>
+                </>
+              )}
 
               <div className="pt-4 border-t border-gray-300 flex flex-col gap-5">
                 {/* {user ? (
