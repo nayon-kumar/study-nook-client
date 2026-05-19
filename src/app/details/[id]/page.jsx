@@ -1,7 +1,9 @@
 import BackButton from "@/components/Details/BackButton";
 import MyContainer from "@/components/shared/MyContainer";
+import { auth } from "@/lib/auth";
 import { getOneRoomByID } from "@/lib/data";
 import { Button, Chip } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import React from "react";
 import { FaHouseDamage } from "react-icons/fa";
@@ -13,6 +15,10 @@ import { RxPeople } from "react-icons/rx";
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
   const room = await getOneRoomByID(id);
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const user = session?.user;
   return (
     <MyContainer className="pt-38 pb-20">
       <div>
@@ -73,32 +79,36 @@ const DetailsPage = async ({ params }) => {
               </div>
             </div>
             <Button className="w-full mt-4">Book Now</Button>
-            <div className="grid grid-cols-2 gap-3 mt-4">
-              <Button variant="secondary" className="w-full">
-                <MdEdit />
-                Edit
-              </Button>
-              <Button variant="danger" className="w-full">
-                <RiDeleteBinLine />
-                Delete
-              </Button>
-            </div>
+            {user.id === room?.userID && (
+              <>
+                <div className="grid grid-cols-2 gap-3 mt-4">
+                  <Button variant="secondary" className="w-full">
+                    <MdEdit />
+                    Edit
+                  </Button>
+                  <Button variant="danger" className="w-full">
+                    <RiDeleteBinLine />
+                    Delete
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
           <div className="border border-gray-200 bg-white rounded-xl shadow p-6 mt-4">
             <p className="text-gray-500">Listed By</p>
             <div className="mt-2 flex items-center gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden">
                 <Image
-                  src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f"
-                  alt="User Name"
+                  src={room?.userImage || "/user.png"}
+                  alt={room.userName}
                   width={64}
                   height={64}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-gray-700">
-                <p>User Name</p>
-                <p>example@gmail.com</p>
+                <p>{room.userName}</p>
+                <p>{room.userEmail}</p>
               </div>
             </div>
           </div>

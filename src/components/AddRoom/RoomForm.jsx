@@ -36,6 +36,7 @@ const RoomForm = () => {
       capacity: Number(formInputData.capacity),
       price: Number(formInputData.price),
       amenities: multipleSelected,
+      bookings: 0,
       date: new Date().toLocaleDateString(),
       userID: user.id,
       userName: user.name,
