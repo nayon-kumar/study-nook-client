@@ -1,4 +1,5 @@
 import BackButton from "@/components/Details/BackButton";
+import DeleteDialog from "@/components/Details/DeleteDialog";
 import EditModal from "@/components/Details/EditModal";
 import MyContainer from "@/components/shared/MyContainer";
 import { auth } from "@/lib/auth";
@@ -83,10 +84,7 @@ const DetailsPage = async ({ params }) => {
               <>
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   <EditModal room={room} />
-                  <Button variant="danger" className="w-full">
-                    <RiDeleteBinLine />
-                    Delete
-                  </Button>
+                  <DeleteDialog room={room} />
                 </div>
               </>
             )}
