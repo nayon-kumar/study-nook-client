@@ -1,4 +1,5 @@
 import BackButton from "@/components/Details/BackButton";
+import BookNowModal from "@/components/Details/BookNowModal";
 import DeleteDialog from "@/components/Details/DeleteDialog";
 import EditModal from "@/components/Details/EditModal";
 import MyContainer from "@/components/shared/MyContainer";
@@ -79,8 +80,8 @@ const DetailsPage = async ({ params }) => {
                 <p>{room?.bookings} Bookings</p>
               </div>
             </div>
-            <Button className="w-full mt-4">Book Now</Button>
-            {user.id === room?.userID && (
+            <BookNowModal room={room} />
+            {user?.id === room?.userID && (
               <>
                 <div className="grid grid-cols-2 gap-3 mt-4">
                   <EditModal room={room} />

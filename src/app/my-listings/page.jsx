@@ -30,7 +30,7 @@ const MyListingsPage = async () => {
         </div>
         <AddButton />
       </div>
-      <div className="grid gap-6 mt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {myListings.map((room) => (
           <RoomCard key={room._id} room={room} />
         ))}

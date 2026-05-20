@@ -1,14 +1,21 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button, Chip } from "@heroui/react";
 import Image from "next/image";
-import Link from "next/link";
 import { FaHouseDamage } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { RxPeople } from "react-icons/rx";
 
 const RoomCard = ({ room }) => {
+  const router = useRouter();
+
   return (
-    <div className="h-full bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 rounded-xl">
-      <Link href={`/details/${room?._id}`} className="flex flex-col h-full">
+    <div
+      onClick={() => router.push(`/details/${room?._id}`)}
+      className="cursor-pointer h-full bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 rounded-xl"
+    >
+      <div className="flex flex-col h-full">
         <div className="relative aspect-video">
           <Image
             src={room?.image}
@@ -21,7 +28,6 @@ const RoomCard = ({ room }) => {
         <div className="p-5 flex flex-col flex-1">
           <div className="flex items-center justify-between gap-4">
             <h3 className="font-bold text-lg md:text-xl">{room?.name}</h3>
-
             <Chip color="accent">${room?.price}/hr</Chip>
           </div>
 
@@ -52,10 +58,18 @@ const RoomCard = ({ room }) => {
             ))}
           </div>
 
-          {/* Push button to bottom */}
-          <Button className="mt-auto w-full">View Details</Button>
+          <Button
+            className="mt-auto w-full"
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              router.push(`/details/${room?._id}`);
+            }}
+          >
+            View Details
+          </Button>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

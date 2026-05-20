@@ -10,7 +10,6 @@ export const metadata = {
 
 const RoomsPage = async () => {
   const rooms = await getAllRooms();
-  console.log(rooms);
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="text-center">
