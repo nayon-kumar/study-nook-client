@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { getMyBookingsByUserID } from "@/lib/data";
 import BookingCard from "@/ui/BookingCard";
 import { headers } from "next/headers";
+import { CiFileOn } from "react-icons/ci";
 
 export const metadata = {
   title: "My Bookings - StudyNook",
@@ -26,11 +27,18 @@ const MyBookingsPage = async () => {
           Manage your upcoming and past room reservations.
         </p>
       </div>
-      <div className="mt-10 flex flex-col gap-4">
-        {myBookings.map((booking) => (
-          <BookingCard key={booking._id} booking={booking} />
-        ))}
-      </div>
+      {myBookings.length > 0 ? (
+        <div className="mt-10 flex flex-col gap-4">
+          {myBookings.map((booking) => (
+            <BookingCard key={booking._id} booking={booking} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-500 flex flex-col gap-2 items-center justify-center mt-15">
+          <CiFileOn size={120} />
+          <p>No booking found. Go to room tab for book your room</p>
+        </div>
+      )}
     </MyContainer>
   );
 };

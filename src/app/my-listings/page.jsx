@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { getMyListingsByUserID } from "@/lib/data";
 import RoomCard from "@/ui/RoomCard";
 import { headers } from "next/headers";
+import { CiFileOn } from "react-icons/ci";
 
 export const metadata = {
   title: "My Listings - StudyNook",
@@ -30,11 +31,21 @@ const MyListingsPage = async () => {
         </div>
         <AddButton />
       </div>
-      <div className="grid gap-6 mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {myListings.map((room) => (
-          <RoomCard key={room._id} room={room} />
-        ))}
-      </div>
+      {myListings.length > 0 ? (
+        <div className="grid gap-6 mt-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {myListings.map((room) => (
+            <RoomCard key={room._id} room={room} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-500 flex flex-col gap-2 items-center justify-center mt-15">
+          <CiFileOn size={120} />
+          <p>
+            No listing found. Click +add room button or go to add room tab for
+            listing your room.
+          </p>
+        </div>
+      )}
     </MyContainer>
   );
 };
