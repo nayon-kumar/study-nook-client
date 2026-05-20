@@ -33,3 +33,14 @@ export const editRoom = async (formData, id) => {
   const data = await res.json();
   return data;
 };
+
+export const deleteRoom = async (roomID) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${roomID}`,
+    {
+      method: "DELETE",
+    },
+  );
+  const data = await res.json();
+  return data;
+};
