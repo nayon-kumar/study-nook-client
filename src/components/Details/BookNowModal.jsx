@@ -21,6 +21,8 @@ import {
   TextField,
 } from "@heroui/react";
 import { useState } from "react";
+import { bookRoom } from "@/lib/data";
+import toast from "react-hot-toast";
 
 const BookNowModal = ({ room }) => {
   const dates = [
@@ -63,22 +65,35 @@ const BookNowModal = ({ room }) => {
 
     const formData = new FormData(e.target);
     const formInputData = Object.fromEntries(formData.entries());
-    console.log(start, end);
 
-    console.log(formInputData);
     const bookingData = {
       roomID: room?._id,
-      usrId: user?.id,
+      userId: user?.id,
       userName: user?.name,
       bookingDate: formInputData.bookingDate,
       startTime: start,
       endTime: end,
+      hours: hours,
       totalCost: totalCost,
       note: formInputData.note,
       status: "confirmed",
     };
-    console.log(bookingData);
-    setIsOpen(false);
+    try {
+      setIsPending(true);
+
+      const result = await bookRoom(bookingData);
+      if (result.insertedId) {
+        toast.success(`${room.name} Room Booked Successfully!`);
+        setIsOpen(false);
+      }
+      if (result.success === false) {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Failed to add room!");
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
@@ -261,7 +276,7 @@ const BookNowModal = ({ room }) => {
                         ) : (
                           <>
                             <Check />
-                            Book Now
+                            Confirm Booking
                           </>
                         )}
                       </Button>

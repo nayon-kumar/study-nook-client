@@ -13,8 +13,11 @@ const MyBookingsPage = () => {
         <h3 className="text-[#0C0B0B] text-2xl font-semibold md:text-4xl">
           My Bookings
         </h3>
-        <p className="mt-4 text-[#6C696D] ">Paragraph</p>
+        <p className="mt-4 text-[#6C696D]">
+          Manage your upcoming and past room reservations.
+        </p>
       </div>
+      <div></div>
     </MyContainer>
   );
 };
