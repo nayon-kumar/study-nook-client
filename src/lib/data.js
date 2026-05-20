@@ -64,3 +64,11 @@ export const bookRoom = async (formData) => {
   const data = await res.json();
   return data;
 };
+
+export const getMyBookingsByUserID = async (usrID) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${usrID}`,
+  );
+  const data = await res.json();
+  return data;
+};

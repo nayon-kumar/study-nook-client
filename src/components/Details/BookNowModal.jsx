@@ -68,6 +68,8 @@ const BookNowModal = ({ room }) => {
 
     const bookingData = {
       roomID: room?._id,
+      roomName: room.name,
+      roomImage: room.image,
       userId: user?.id,
       userName: user?.name,
       bookingDate: formInputData.bookingDate,
