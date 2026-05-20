@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { FaRegCalendarCheck } from "react-icons/fa";
 import MyContainer from "../shared/MyContainer";
@@ -5,9 +6,10 @@ import { RiCalendarScheduleLine } from "react-icons/ri";
 import { HiOutlineClipboardList } from "react-icons/hi";
 import { Button } from "@heroui/react";
 import { FaArrowRight } from "react-icons/fa6";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const How = () => {
+  const router = useRouter();
   return (
     <div className="pb-10 pt-10 my-10">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
@@ -50,11 +52,9 @@ const How = () => {
         </div>
       </MyContainer>
       <div className="text-center mt-15">
-        <Link href="/rooms">
-          <Button className="rounded-md">
-            Start Browsing <FaArrowRight />
-          </Button>
-        </Link>
+        <Button onClick={() => router.push("/rooms")} className="rounded-md">
+          Start Browsing <FaArrowRight />
+        </Button>
       </div>
     </div>
   );

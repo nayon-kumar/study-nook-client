@@ -6,6 +6,9 @@ import Navlink from "./Navlink";
 import { Bars, Xmark } from "@gravity-ui/icons";
 import { authClient } from "@/lib/auth-client";
 import Profile from "./Profile";
+import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { LuLogOut } from "react-icons/lu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +20,12 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const router = useRouter();
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.push("/");
+    router.refresh();
+  };
   return (
     <div className="fixed w-full sm:w-auto bg-white border-2 sm:top-4 sm:left-4 sm:right-4 z-50 sm:rounded-2xl shadow-lg">
       <nav className="max-w-7xl mx-auto px-4 py-4">
@@ -145,14 +154,29 @@ const Navbar = () => {
                     </Navlink>
                   </>
                 )} */}
-                <>
-                  <Navlink onClick={closeMenu} href="/login">
-                    Login
-                  </Navlink>
-                  <Navlink onClick={closeMenu} href="/register">
-                    Register
-                  </Navlink>
-                </>
+                {user ? (
+                  <>
+                    <h3 className="font-semibold">Name: {user.name}</h3>
+                    <p className="text-gray-500">Email: {user.email}</p>
+                    <Button
+                      onClick={handleLogout}
+                      variant="danger"
+                      className="w-full"
+                    >
+                      <LuLogOut />
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Navlink onClick={closeMenu} href="/login">
+                      Login
+                    </Navlink>
+                    <Navlink onClick={closeMenu} href="/register">
+                      Register
+                    </Navlink>
+                  </>
+                )}
               </div>
             </div>
           </div>

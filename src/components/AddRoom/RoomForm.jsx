@@ -14,6 +14,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -23,6 +24,8 @@ const RoomForm = () => {
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
+
+  const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +54,7 @@ const RoomForm = () => {
 
       if (result.insertedId) {
         toast.success(`${roomData.name} Room Added!`);
+        router.push("/my-listings");
       }
 
       e.target.reset();

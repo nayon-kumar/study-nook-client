@@ -40,6 +40,7 @@ const RegisterForm = () => {
         image: signUpData.image,
       });
       if (data) {
+        await authClient.signOut();
         toast.success("Register Successfully!");
         redirect("/login");
       } else {

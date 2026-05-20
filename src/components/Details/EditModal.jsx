@@ -16,6 +16,7 @@ import {
   TextArea,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { MdEdit } from "react-icons/md";
@@ -24,6 +25,7 @@ const EditModal = ({ room }) => {
   const [multipleSelected, setMultipleSelected] = useState(
     room?.amenities || [],
   );
+  const router = useRouter();
 
   const [isPending, setIsPending] = useState(false);
 
@@ -57,7 +59,7 @@ const EditModal = ({ room }) => {
 
       if (result.modifiedCount > 0) {
         toast.success("Edited Successfully!");
-        window.location.reload();
+        router.refresh();
       }
     } catch (error) {
       toast.error("Failed to edit room!");

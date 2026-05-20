@@ -9,8 +9,8 @@ const Profile = ({ user }) => {
   const router = useRouter();
   const handleLogout = async () => {
     await authClient.signOut();
-    router.push("/"); // redirect to home
-    router.refresh(); // optional but helps reset state
+    router.push("/");
+    router.refresh();
   };
   return (
     <MyContainer>
@@ -38,13 +38,17 @@ const Profile = ({ user }) => {
           </div>
           <Dropdown.Menu>
             <Dropdown.Item
-              href="/my-listings"
+              onAction={() => router.push("/my-listings")}
               id="dashboard"
               textValue="Dashboard"
             >
               <Label>My Listings</Label>
             </Dropdown.Item>
-            <Dropdown.Item href="/my-bookings" id="profile" textValue="Profile">
+            <Dropdown.Item
+              onAction={() => router.push("/my-bookings")}
+              id="profile"
+              textValue="Profile"
+            >
               <Label>My Bookings</Label>
             </Dropdown.Item>
 
