@@ -44,3 +44,11 @@ export const deleteRoom = async (roomID) => {
   const data = await res.json();
   return data;
 };
+
+export const getMyListingsByUserID = async (usrID) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/my-listings/${usrID}`,
+  );
+  const data = await res.json();
+  return data;
+};
