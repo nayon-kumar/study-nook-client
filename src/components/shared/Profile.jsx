@@ -1,9 +1,17 @@
+"use client";
 import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
 import { Avatar, Dropdown, Label } from "@heroui/react";
 import MyContainer from "./MyContainer";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const Profile = ({ user }) => {
+  const router = useRouter();
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.push("/"); // redirect to home
+    router.refresh(); // optional but helps reset state
+  };
   return (
     <MyContainer>
       <Dropdown>
@@ -44,7 +52,7 @@ const Profile = ({ user }) => {
               id="logout"
               textValue="Logout"
               variant="danger"
-              onClick={async () => await authClient.signOut()}
+              onClick={handleLogout}
             >
               <div className="flex w-full items-center justify-between gap-2">
                 <Label>Log Out</Label>

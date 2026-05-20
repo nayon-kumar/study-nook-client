@@ -1,3 +1,4 @@
+import CancelBookingAlert from "@/components/MyBookings/CancelBookingAlert";
 import { Button, Chip } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
@@ -5,12 +6,9 @@ import React from "react";
 const BookingCard = ({ booking }) => {
   return (
     <div className="border rounded-2xl shadow-md bg-white p-4 sm:p-5">
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-5 items-start">
-        {/* LEFT SECTION */}
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-5 items-center">
         <div className="flex flex-col gap-4">
-          {/* Top: Image + Info */}
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Image */}
             <div className="relative w-full sm:w-44 aspect-video rounded-xl overflow-hidden bg-gray-100">
               <Image
                 src={booking.roomImage}
@@ -20,7 +18,6 @@ const BookingCard = ({ booking }) => {
               />
             </div>
 
-            {/* Info */}
             <div className="flex flex-col justify-between gap-2">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">
@@ -46,7 +43,6 @@ const BookingCard = ({ booking }) => {
           </div>
         </div>
 
-        {/* RIGHT SECTION */}
         <div className="flex md:flex-col flex-row items-center md:items-end md:justify-start gap-3 w-full md:w-auto">
           <Chip
             color={booking.status === "cancelled" ? "danger" : "success"}
@@ -55,9 +51,9 @@ const BookingCard = ({ booking }) => {
             {booking.status}
           </Chip>
 
-          <Button color="danger" variant="danger" className=" md:w-auto">
-            Cancel
-          </Button>
+          {booking?.status === "confirmed" && (
+            <CancelBookingAlert booking={booking} />
+          )}
         </div>
       </div>
     </div>

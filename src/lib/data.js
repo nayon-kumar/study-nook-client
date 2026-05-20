@@ -72,3 +72,14 @@ export const getMyBookingsByUserID = async (usrID) => {
   const data = await res.json();
   return data;
 };
+
+export const cancelBookingByID = async (bookingID) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/cancel/${bookingID}`,
+    {
+      method: "PATCH",
+    },
+  );
+  const data = await res.json();
+  return data;
+};

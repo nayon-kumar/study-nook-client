@@ -16,7 +16,6 @@ const MyBookingsPage = async () => {
   });
   const user = session?.user;
   const myBookings = await getMyBookingsByUserID(user.id);
-  console.log(myBookings);
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="text-center">
