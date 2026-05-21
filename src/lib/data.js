@@ -4,6 +4,12 @@ export const getAllRooms = async () => {
   return data;
 };
 
+export const getLatestRooms = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/latest`);
+  const data = await res.json();
+  return data;
+};
+
 export const getOneRoomByID = async (id, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`, {
     headers: {
