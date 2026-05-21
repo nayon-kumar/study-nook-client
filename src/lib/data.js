@@ -1,5 +1,8 @@
-export const getAllRooms = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`);
+export const getAllRooms = async (search = "") => {
+  const url = search
+    ? `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms?search=${search}`
+    : `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`;
+  const res = await fetch(url, { cache: "no-store" });
   const data = await res.json();
   return data;
 };

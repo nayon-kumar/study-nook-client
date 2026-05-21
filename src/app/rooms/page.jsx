@@ -1,3 +1,4 @@
+import RoomSearch from "@/components/Rooms/RoomSearch";
 import MyContainer from "@/components/shared/MyContainer";
 import { getAllRooms } from "@/lib/data";
 import RoomCard from "@/ui/RoomCard";
@@ -8,8 +9,10 @@ export const metadata = {
     "StudyNook is a full-stack web application where students and library users can list study rooms they control (e.g., private rooms in a university library), and any registered user can browse, search, filter, and book those rooms for a specific date and time slot. ",
 };
 
-const RoomsPage = async () => {
-  const rooms = await getAllRooms();
+const RoomsPage = async ({ searchParams }) => {
+  const params = await searchParams;
+  const search = params?.search || "";
+  const rooms = await getAllRooms(search);
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="text-center">
@@ -20,7 +23,9 @@ const RoomsPage = async () => {
           Browse the full catalog. Filter by amenity, price, or search by name.
         </p>
       </div>
-      <div>Filter and Search option</div>
+      <div>
+        <RoomSearch />
+      </div>
       <div className="grid gap-6 mt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {rooms.map((room) => (
           <RoomCard key={room._id} room={room} />
