@@ -5,7 +5,7 @@ import EditModal from "@/components/Details/EditModal";
 import MyContainer from "@/components/shared/MyContainer";
 import { auth } from "@/lib/auth";
 import { getOneRoomByID } from "@/lib/data";
-import { Button, Chip } from "@heroui/react";
+import { Chip } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
 import React from "react";

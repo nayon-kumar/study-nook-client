@@ -1,6 +1,6 @@
 "use client";
 import CancelBookingAlert from "@/components/MyBookings/CancelBookingAlert";
-import { Button, Chip } from "@heroui/react";
+import { Chip } from "@heroui/react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
