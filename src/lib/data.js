@@ -50,9 +50,14 @@ export const deleteRoom = async (roomID) => {
   return data;
 };
 
-export const getMyListingsByUserID = async (usrID) => {
+export const getMyListingsByUserID = async (usrID, token) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/my-listings/${usrID}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
   );
   const data = await res.json();
   return data;
@@ -70,9 +75,14 @@ export const bookRoom = async (formData) => {
   return data;
 };
 
-export const getMyBookingsByUserID = async (usrID) => {
+export const getMyBookingsByUserID = async (usrID, token) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${usrID}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
   );
   const data = await res.json();
   return data;

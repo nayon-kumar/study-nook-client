@@ -16,7 +16,12 @@ const MyBookingsPage = async () => {
     headers: await headers(),
   });
   const user = session?.user;
-  const myBookings = await getMyBookingsByUserID(user.id);
+
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const myBookings = await getMyBookingsByUserID(user.id, token);
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="text-center">

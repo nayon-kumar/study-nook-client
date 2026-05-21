@@ -16,8 +16,11 @@ const MyListingsPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
   const user = session?.user;
-  const myListings = await getMyListingsByUserID(user.id);
+  const myListings = await getMyListingsByUserID(user.id, token);
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="flex items-center justify-between gap-4">
