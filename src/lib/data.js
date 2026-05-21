@@ -14,11 +14,12 @@ export const getOneRoomByID = async (id, token) => {
   return data;
 };
 
-export const addRoom = async (formData) => {
+export const addRoom = async (formData, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(formData),
   });

@@ -29,6 +29,9 @@ const RoomForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const { data: tokenData } = await authClient.token();
+    const token = tokenData?.token;
+
     const formData = new FormData(e.target);
     const formInputData = Object.fromEntries(formData.entries());
     const roomData = {
@@ -50,7 +53,7 @@ const RoomForm = () => {
     try {
       setIsPending(true);
 
-      const result = await addRoom(roomData);
+      const result = await addRoom(roomData, token);
 
       if (result.insertedId) {
         toast.success(`${roomData.name} Room Added!`);

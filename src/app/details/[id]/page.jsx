@@ -11,7 +11,6 @@ import Image from "next/image";
 import React from "react";
 import { FaHouseDamage } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
-import { RiDeleteBinLine } from "react-icons/ri";
 import { RxPeople } from "react-icons/rx";
 
 const DetailsPage = async ({ params }) => {
