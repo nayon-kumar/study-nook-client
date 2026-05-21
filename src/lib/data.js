@@ -27,11 +27,12 @@ export const addRoom = async (formData, token) => {
   return data;
 };
 
-export const editRoom = async (formData, id) => {
+export const editRoom = async (formData, id, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(formData),
   });
@@ -39,11 +40,14 @@ export const editRoom = async (formData, id) => {
   return data;
 };
 
-export const deleteRoom = async (roomID) => {
+export const deleteRoom = async (roomID, token) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${roomID}`,
     {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
   );
   const data = await res.json();

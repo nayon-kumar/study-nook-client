@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { deleteRoom } from "@/lib/data";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -7,8 +8,11 @@ import { RiDeleteBinLine } from "react-icons/ri";
 
 const DeleteDialog = ({ room }) => {
   const router = useRouter();
+
   const handleDelete = async (roomID) => {
-    const result = await deleteRoom(roomID);
+    const { data: tokenData } = await authClient.token();
+    const token = tokenData?.token;
+    const result = await deleteRoom(roomID, token);
     if (result.deletedCount > 0) {
       toast.error("Room Deleted!");
       router.push("/my-listings");

@@ -55,7 +55,10 @@ const EditModal = ({ room }) => {
     try {
       setIsPending(true);
 
-      const result = await editRoom(updatedRoomData, room._id);
+      const { data: tokenData } = await authClient.token();
+      const token = tokenData?.token;
+
+      const result = await editRoom(updatedRoomData, room._id, token);
 
       if (result.modifiedCount > 0) {
         toast.success("Edited Successfully!");
