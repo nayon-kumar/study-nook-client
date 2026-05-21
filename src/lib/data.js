@@ -1,3 +1,14 @@
+import { headers } from "next/headers";
+import { auth } from "./auth";
+
+const getAuthToken = async () => {
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  return token;
+};
+
 export const getAllRooms = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`);
   const data = await res.json();
@@ -5,7 +16,12 @@ export const getAllRooms = async () => {
 };
 
 export const getOneRoomByID = async (id) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`);
+  const token = await getAuthToken();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const data = await res.json();
   return data;
 };
