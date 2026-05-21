@@ -83,7 +83,10 @@ const BookNowModal = ({ room }) => {
     try {
       setIsPending(true);
 
-      const result = await bookRoom(bookingData);
+      const { data: tokenData } = await authClient.token();
+      const token = tokenData?.token;
+
+      const result = await bookRoom(bookingData, token);
       if (result.insertedId) {
         toast.success(`${room.name} Room Booked Successfully!`);
         setIsOpen(false);

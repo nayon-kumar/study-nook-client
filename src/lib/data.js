@@ -67,11 +67,12 @@ export const getMyListingsByUserID = async (usrID, token) => {
   return data;
 };
 
-export const bookRoom = async (formData) => {
+export const bookRoom = async (formData, token) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(formData),
   });
