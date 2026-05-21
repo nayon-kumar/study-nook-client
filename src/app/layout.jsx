@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import "animate.css";
 
 const fontFraunces = Fraunces({
   subsets: ["latin"],
