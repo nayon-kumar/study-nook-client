@@ -36,8 +36,8 @@ const RoomSearch = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Search rooms by name..."
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 
+            placeholder="Search by room name..."
+            className="w-full px-4 py-1.5 rounded-xl border border-gray-200 
                        focus:outline-none focus:ring-2 focus:ring-black/20
                        focus:border-black transition"
           />
@@ -46,7 +46,7 @@ const RoomSearch = () => {
         {/* Button */}
         <button
           onClick={handleSearch}
-          className="w-full md:w-auto px-6 py-3 rounded-xl 
+          className="w-full md:w-auto px-6 py-1.5 rounded-xl 
                      bg-black text-white font-medium
                      hover:bg-gray-800 active:scale-[0.98]
                      transition-all duration-200"

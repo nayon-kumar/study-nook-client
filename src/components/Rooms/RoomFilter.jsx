@@ -88,7 +88,7 @@ export default function RoomFilter() {
             placeholder="e.g. 100"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
-            className="w-full rounded-xl border border-gray-200 px-4 py-3
+            className="w-full rounded-xl border border-gray-200 px-4 py-1.5
                        focus:outline-none focus:ring-2 focus:ring-black/10
                        focus:border-black transition"
           />
@@ -104,7 +104,7 @@ export default function RoomFilter() {
             placeholder="e.g. 500"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
-            className="w-full rounded-xl border border-gray-200 px-4 py-3
+            className="w-full rounded-xl border border-gray-200 px-4 py-1.5
                        focus:outline-none focus:ring-2 focus:ring-black/10
                        focus:border-black transition"
           />
@@ -123,7 +123,7 @@ export default function RoomFilter() {
               <button
                 key={item}
                 onClick={() => toggleAmenity(item)}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200
+                className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200
                   ${
                     active
                       ? "bg-black text-white border-black shadow-sm"
@@ -141,7 +141,7 @@ export default function RoomFilter() {
       <div className="mt-6 flex flex-col sm:flex-row gap-3">
         <button
           onClick={applyFilters}
-          className="w-full sm:w-auto bg-black text-white px-6 py-3 rounded-xl
+          className="w-full sm:w-auto bg-black text-white px-6 py-1.5 rounded-xl
                      font-medium hover:bg-gray-800 active:scale-[0.98]
                      transition-all duration-200"
         >
@@ -150,7 +150,7 @@ export default function RoomFilter() {
 
         <button
           onClick={clearFilters}
-          className="w-full sm:w-auto border border-gray-300 px-6 py-3 rounded-xl
+          className="w-full sm:w-auto border border-gray-300 px-6 py-1.5 rounded-xl
                      font-medium text-gray-700 hover:border-black hover:text-black
                      transition-all duration-200"
         >
