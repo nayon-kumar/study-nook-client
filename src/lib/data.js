@@ -93,11 +93,14 @@ export const getMyBookingsByUserID = async (usrID, token) => {
   return data;
 };
 
-export const cancelBookingByID = async (bookingID) => {
+export const cancelBookingByID = async (bookingID, token) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/cancel/${bookingID}`,
     {
       method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
   );
   const data = await res.json();

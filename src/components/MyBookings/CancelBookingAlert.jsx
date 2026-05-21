@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { cancelBookingByID } from "@/lib/data";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -7,7 +8,9 @@ import toast from "react-hot-toast";
 const CancelBookingAlert = ({ booking }) => {
   const router = useRouter();
   const handleClick = async (bookingID) => {
-    const result = await cancelBookingByID(bookingID);
+    const { data: tokenData } = await authClient.token();
+    const token = tokenData.token;
+    const result = await cancelBookingByID(bookingID, token);
     if (result.modifiedCount > 0) {
       toast.error(`${booking.roomName} Booking Cancelled!`);
       router.refresh();
