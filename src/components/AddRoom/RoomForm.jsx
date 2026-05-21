@@ -48,6 +48,7 @@ const RoomForm = () => {
       userName: user.name,
       userEmail: user.email,
       userImage: user.image,
+      createdAt: new Date(),
     };
 
     try {
