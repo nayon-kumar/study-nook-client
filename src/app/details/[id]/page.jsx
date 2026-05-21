@@ -16,7 +16,10 @@ import { RxPeople } from "react-icons/rx";
 
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
-  const room = await getOneRoomByID(id);
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+  const room = await getOneRoomByID(id, token);
   const session = await auth.api.getSession({
     headers: await headers(),
   });
