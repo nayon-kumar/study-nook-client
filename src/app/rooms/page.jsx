@@ -1,3 +1,4 @@
+import RoomFilter from "@/components/Rooms/RoomFilter";
 import RoomSearch from "@/components/Rooms/RoomSearch";
 import MyContainer from "@/components/shared/MyContainer";
 import { getAllRooms } from "@/lib/data";
@@ -11,8 +12,19 @@ export const metadata = {
 
 const RoomsPage = async ({ searchParams }) => {
   const params = await searchParams;
+
   const search = params?.search || "";
-  const rooms = await getAllRooms(search);
+  const minPrice = params?.minPrice || "";
+  const maxPrice = params?.maxPrice || "";
+  const amenities = params?.amenities || "";
+
+  const rooms = await getAllRooms({
+    search,
+    minPrice,
+    maxPrice,
+    amenities,
+  });
+
   return (
     <MyContainer className="pt-40 pb-20">
       <div className="text-center">
@@ -25,6 +37,7 @@ const RoomsPage = async ({ searchParams }) => {
       </div>
       <div>
         <RoomSearch />
+        <RoomFilter />
       </div>
       <div className="grid gap-6 mt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {rooms.map((room) => (

@@ -1,10 +1,19 @@
-export const getAllRooms = async (search = "") => {
-  const url = search
-    ? `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms?search=${search}`
-    : `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`;
-  const res = await fetch(url, { cache: "no-store" });
-  const data = await res.json();
-  return data;
+export const getAllRooms = async (filters = {}) => {
+  const query = new URLSearchParams();
+
+  if (filters.search) query.append("search", filters.search);
+  if (filters.minPrice) query.append("minPrice", filters.minPrice);
+  if (filters.maxPrice) query.append("maxPrice", filters.maxPrice);
+  if (filters.amenities) query.append("amenities", filters.amenities);
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms?${query.toString()}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  return res.json();
 };
 
 export const getLatestRooms = async () => {
